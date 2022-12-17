@@ -1,3 +1,7 @@
+/*
+Worked with Stephanie Percy
+*/
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,15 +12,15 @@
 // Sudoku board. Modify this to test your checker!
 // 0 == empty cell; 1-9 is the filled in digit.
 int board[SIZE][SIZE] = {
-    {1,0,0,0,0,0,0,0,0},
+    {4,1,0,0,0,0,0,0,0},
     {0,2,0,0,0,0,0,0,0},
-    {0,0,3,0,0,0,0,0,0},
-    {0,0,0,4,0,0,0,0,0},
-    {0,0,0,0,5,0,0,0,0},
-    {0,0,0,0,0,6,0,0,0},
-    {0,0,0,0,0,0,7,0,0},
-    {0,0,0,0,0,0,0,8,0},
-    {0,0,0,0,0,0,0,0,9},
+    {0,3,6,0,0,0,0,0,0},
+    {0,4,0,4,0,0,0,0,0},
+    {0,5,0,0,5,0,0,0,0},
+    {0,6,0,0,0,6,0,0,0},
+    {0,7,0,0,0,0,7,0,0},
+    {0,8,0,0,0,0,0,8,0},
+    {0,9,0,0,0,0,0,0,9},
 };
 
 bool row_check[SIZE];
@@ -46,8 +50,9 @@ void* checkRow(void* args) {
   }
   int row = *((int *)args);
 
-  for (i = 0; i < SIZE; i++) {
-    occurance[board][i][row] - 1] += 1;
+  for (i = 0; i < SIZE; i++)
+  {
+    occurance[board[i][row] - 1] += 1;
   }
   row_check[row] = true;
   for (i = 0; i < SIZE; i++)
@@ -68,12 +73,12 @@ void* checkCol(void* args)
   int i = 0;
   for(i = 0; i < SIZE; i++)
   {
-    occurance[i] = 0
+    occurance[i] = 0;
   }
   int col = *((int *)args);
   for(i = 0; i < SIZE; i++)
   {
-    occurance[board][col][i] - 1] += 1;
+    occurance[board[col][i] - 1] += 1;
   }
 
   col_check[col] = true;
@@ -200,4 +205,6 @@ int main()
     }
     return 0;
 }
+
+
 
